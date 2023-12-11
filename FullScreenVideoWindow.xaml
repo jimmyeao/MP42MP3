@@ -1,0 +1,10 @@
+﻿<Window x:Class="MP42MP3.FullscreenVideoWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        WindowStyle="None"
+        WindowState="Maximized"
+        Background="Black">
+    <Grid>
+        <MediaElement x:Name="fullscreenMediaElement" LoadedBehavior="Manual" UnloadedBehavior="Stop" Stretch="UniformToFill"/>
+    </Grid>
+</Window>
