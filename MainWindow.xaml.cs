@@ -3,6 +3,7 @@ using NAudio.Lame; // For LameMP3FileWriter and LAMEPreset
 using NAudio.Wave; // Make sure you have NAudio installed
 using System;
 using System.IO;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -56,8 +57,14 @@ namespace MP42MP3
             progressBar.Value = 0;
 
             int selectedBitrate = GetSelectedBitrate();
-
-            foreach (string filePath in filesListBox.Items)
+            // set a deafult bitrate if none is selected
+            if (selectedBitrate == 0)
+            {
+                selectedBitrate = 320000;
+            }
+            // need to get all the files in the list box and store the full path in a variable
+            var filePaths = filesListBox.Items.Cast<string>().ToList();
+            foreach (string filePath in filePaths)
             {
                 string outputFilePath = Path.ChangeExtension(filePath, ".mp3");
                 try
@@ -72,8 +79,9 @@ namespace MP42MP3
                     UpdateStatusBar($"Converted: {Path.GetFileName(filePath)}");
                     if (deleteFilesCheckBox.IsChecked == true)
                     {
-                        File.Delete(filePath);
+                        
                         Dispatcher.Invoke(() => filesListBox.Items.Remove(filePath));
+                        File.Delete(filePath);
                     }
                 }
                 catch (Exception ex)

@@ -61,13 +61,14 @@
         <!-- Conversion Area -->
         <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="0,10,0,10" HorizontalAlignment="Center" Width="458">
             <Button x:Name="convertButton" Content="Convert to MP3" Margin="5" Click="ConvertToMp3_Click" IsEnabled="False"/>
-            <ComboBox x:Name="bitrateComboBox" Width="100" Margin="5">
+            <ComboBox x:Name="bitrateComboBox" Width="100" Margin="5" SelectedIndex="0">
                 <ComboBoxItem Content="128 kbps"/>
                 <ComboBoxItem Content="192 kbps"/>
                 <ComboBoxItem Content="256 kbps"/>
                 <ComboBoxItem Content="320 kbps"/>
+                
             </ComboBox>
-            <CheckBox x:Name="deleteFilesCheckBox" Content="Delete MP4 files after conversion" Margin="5"/>
+            <CheckBox x:Name="deleteFilesCheckBox" Content="Delete files after conversion" Margin="5"/>
         </StackPanel>
 
         <!-- Status Bar and Progress Bar -->
